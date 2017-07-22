@@ -3,7 +3,7 @@
 //  TPDelegateMatrioska
 //
 //  Created by Tpphha on 22/07/17.
-//  Copyright (c) 2013 Tpphha. All rights reserved.
+//  Copyright (c) 2017 Tpphha. All rights reserved.
 //  Thanks https://github.com/lukabernardi/LBDelegateMatrioska
 
 #import <Foundation/Foundation.h>

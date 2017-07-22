@@ -7,16 +7,22 @@
 //
 
 #import "ViewController.h"
+#import "TPTestServer.h"
 
-@interface ViewController ()
+@interface ViewController () <TPTestServerDelegate>
 
 @end
 
 @implementation ViewController
 
+- (void)server:(TPTestServer *)server didReceiveMsg:(NSString *)msg {
+    NSLog(@"ViewController did receiveMsg: %@", msg);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [[TPTestServer sharedServer] addDelegate:self];
 }
 
 

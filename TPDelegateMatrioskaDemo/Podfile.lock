@@ -1,0 +1,16 @@
+PODS:
+  - TPDelegateMatrioska (0.0.1)
+
+DEPENDENCIES:
+  - TPDelegateMatrioska (from `../`)
+
+EXTERNAL SOURCES:
+  TPDelegateMatrioska:
+    :path: ../
+
+SPEC CHECKSUMS:
+  TPDelegateMatrioska: 72243c61c6489cb8a50ac4ec36f38aeeab2d52b0
+
+PODFILE CHECKSUM: 37d75069da8b66453aaeb4f1eaf1e8f95b0cd8d9
+
+COCOAPODS: 1.2.1

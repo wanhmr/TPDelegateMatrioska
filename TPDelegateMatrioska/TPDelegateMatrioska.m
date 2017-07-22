@@ -3,7 +3,7 @@
 //  TPDelegateMatrioska
 //
 //  Created by Tpphha on 22/07/17.
-//  Copyright (c) 2013 Tpphha. All rights reserved.
+//  Copyright (c) 2017 Tpphha. All rights reserved.
 //  Thanks https://github.com/lukabernardi/LBDelegateMatrioska
 
 
@@ -43,7 +43,7 @@ static inline qos_class_t NSQualityOfServiceToQOSClass(NSQualityOfService qos) {
     _mutableDelegates = [NSPointerArray weakObjectsPointerArray];
     dispatch_qos_class_t qosClass = NSQualityOfServiceToQOSClass(qos);
     dispatch_queue_attr_t attr = dispatch_queue_attr_make_with_qos_class(DISPATCH_QUEUE_SERIAL, qosClass, 0);
-    _queue = dispatch_queue_create(name, attr);
+    _queue = dispatch_queue_create("com.tpphha.TPDelegateMatrioska", attr);
     return self;
 }
 

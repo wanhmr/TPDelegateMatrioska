@@ -7,16 +7,22 @@
 //
 
 #import "AppDelegate.h"
+#import "TPTestServer.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <TPTestServerDelegate>
 
 @end
 
 @implementation AppDelegate
 
+- (void)server:(TPTestServer *)server didReceiveMsg:(NSString *)msg {
+    NSLog(@"AppDelegate did receiveMsg: %@", msg);
+}
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [[TPTestServer sharedServer] addDelegate:self];
     return YES;
 }
 

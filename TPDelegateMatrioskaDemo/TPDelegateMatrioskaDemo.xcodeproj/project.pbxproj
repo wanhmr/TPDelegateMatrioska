@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4387D22A1056C8201620943F /* libPods-TPDelegateMatrioskaDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08B810B51C4695288065AC95 /* libPods-TPDelegateMatrioskaDemoTests.a */; };
+		497A45DA7AB308F782D07B8B /* libPods-TPDelegateMatrioskaDemoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24582F4E365562672D116C96 /* libPods-TPDelegateMatrioskaDemoUITests.a */; };
+		A29ADA6DCB23AB0FD04749D5 /* libPods-TPDelegateMatrioskaDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC293DB3D1A80290FCE693B /* libPods-TPDelegateMatrioskaDemo.a */; };
 		F00250E61F230E570045B118 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F00250E51F230E570045B118 /* main.m */; };
 		F00250E91F230E570045B118 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F00250E81F230E570045B118 /* AppDelegate.m */; };
 		F00250EC1F230E570045B118 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F00250EB1F230E570045B118 /* ViewController.m */; };
@@ -15,6 +18,7 @@
 		F00250F41F230E570045B118 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F00250F21F230E570045B118 /* LaunchScreen.storyboard */; };
 		F00250FF1F230E570045B118 /* TPDelegateMatrioskaDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F00250FE1F230E570045B118 /* TPDelegateMatrioskaDemoTests.m */; };
 		F002510A1F230E570045B118 /* TPDelegateMatrioskaDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F00251091F230E570045B118 /* TPDelegateMatrioskaDemoUITests.m */; };
+		F002511A1F23153D0045B118 /* TPTestServer.m in Sources */ = {isa = PBXBuildFile; fileRef = F00251191F23153D0045B118 /* TPTestServer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +39,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08B810B51C4695288065AC95 /* libPods-TPDelegateMatrioskaDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TPDelegateMatrioskaDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		24582F4E365562672D116C96 /* libPods-TPDelegateMatrioskaDemoUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TPDelegateMatrioskaDemoUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BC293DB3D1A80290FCE693B /* libPods-TPDelegateMatrioskaDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TPDelegateMatrioskaDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		95A49E7678AFF18465008859 /* Pods-TPDelegateMatrioskaDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPDelegateMatrioskaDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TPDelegateMatrioskaDemo/Pods-TPDelegateMatrioskaDemo.release.xcconfig"; sourceTree = "<group>"; };
+		AD975723CA4C0C2F91A65377 /* Pods-TPDelegateMatrioskaDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPDelegateMatrioskaDemoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TPDelegateMatrioskaDemoUITests/Pods-TPDelegateMatrioskaDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CF6C21536D8CC24CA1CE4446 /* Pods-TPDelegateMatrioskaDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPDelegateMatrioskaDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TPDelegateMatrioskaDemoTests/Pods-TPDelegateMatrioskaDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EA0F36EFA844DCDC861293AC /* Pods-TPDelegateMatrioskaDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPDelegateMatrioskaDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TPDelegateMatrioskaDemo/Pods-TPDelegateMatrioskaDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		EF06A69148DD51F552F6D3B5 /* Pods-TPDelegateMatrioskaDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPDelegateMatrioskaDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TPDelegateMatrioskaDemoTests/Pods-TPDelegateMatrioskaDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		F00250E11F230E570045B118 /* TPDelegateMatrioskaDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TPDelegateMatrioskaDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00250E51F230E570045B118 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F00250E71F230E570045B118 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +63,9 @@
 		F00251051F230E570045B118 /* TPDelegateMatrioskaDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TPDelegateMatrioskaDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00251091F230E570045B118 /* TPDelegateMatrioskaDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TPDelegateMatrioskaDemoUITests.m; sourceTree = "<group>"; };
 		F002510B1F230E570045B118 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F00251181F23153D0045B118 /* TPTestServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTestServer.h; sourceTree = "<group>"; };
+		F00251191F23153D0045B118 /* TPTestServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTestServer.m; sourceTree = "<group>"; };
+		FB377D0D8CF2FAB873FE0503 /* Pods-TPDelegateMatrioskaDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPDelegateMatrioskaDemoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TPDelegateMatrioskaDemoUITests/Pods-TPDelegateMatrioskaDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A29ADA6DCB23AB0FD04749D5 /* libPods-TPDelegateMatrioskaDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4387D22A1056C8201620943F /* libPods-TPDelegateMatrioskaDemoTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +89,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				497A45DA7AB308F782D07B8B /* libPods-TPDelegateMatrioskaDemoUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36CD00272B8F04B8278BE564 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6BC293DB3D1A80290FCE693B /* libPods-TPDelegateMatrioskaDemo.a */,
+				08B810B51C4695288065AC95 /* libPods-TPDelegateMatrioskaDemoTests.a */,
+				24582F4E365562672D116C96 /* libPods-TPDelegateMatrioskaDemoUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A982D755A7497859427FC7DE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EA0F36EFA844DCDC861293AC /* Pods-TPDelegateMatrioskaDemo.debug.xcconfig */,
+				95A49E7678AFF18465008859 /* Pods-TPDelegateMatrioskaDemo.release.xcconfig */,
+				CF6C21536D8CC24CA1CE4446 /* Pods-TPDelegateMatrioskaDemoTests.debug.xcconfig */,
+				EF06A69148DD51F552F6D3B5 /* Pods-TPDelegateMatrioskaDemoTests.release.xcconfig */,
+				FB377D0D8CF2FAB873FE0503 /* Pods-TPDelegateMatrioskaDemoUITests.debug.xcconfig */,
+				AD975723CA4C0C2F91A65377 /* Pods-TPDelegateMatrioskaDemoUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F00250D81F230E570045B118 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +126,8 @@
 				F00250FD1F230E570045B118 /* TPDelegateMatrioskaDemoTests */,
 				F00251081F230E570045B118 /* TPDelegateMatrioskaDemoUITests */,
 				F00250E21F230E570045B118 /* Products */,
+				A982D755A7497859427FC7DE /* Pods */,
+				36CD00272B8F04B8278BE564 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,6 +153,8 @@
 				F00250F21F230E570045B118 /* LaunchScreen.storyboard */,
 				F00250F51F230E570045B118 /* Info.plist */,
 				F00250E41F230E570045B118 /* Supporting Files */,
+				F00251181F23153D0045B118 /* TPTestServer.h */,
+				F00251191F23153D0045B118 /* TPTestServer.m */,
 			);
 			path = TPDelegateMatrioskaDemo;
 			sourceTree = "<group>";
@@ -147,9 +192,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F002510E1F230E570045B118 /* Build configuration list for PBXNativeTarget "TPDelegateMatrioskaDemo" */;
 			buildPhases = (
+				9F76A4A3632CA9AC648C1A46 /* [CP] Check Pods Manifest.lock */,
 				F00250DD1F230E570045B118 /* Sources */,
 				F00250DE1F230E570045B118 /* Frameworks */,
 				F00250DF1F230E570045B118 /* Resources */,
+				5AD3178AE21852D3549A4B6A /* [CP] Embed Pods Frameworks */,
+				FCDDCEDF60D9AB2703A5F117 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -164,9 +212,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F00251111F230E570045B118 /* Build configuration list for PBXNativeTarget "TPDelegateMatrioskaDemoTests" */;
 			buildPhases = (
+				A344CD62D6D4584BD2859AD3 /* [CP] Check Pods Manifest.lock */,
 				F00250F61F230E570045B118 /* Sources */,
 				F00250F71F230E570045B118 /* Frameworks */,
 				F00250F81F230E570045B118 /* Resources */,
+				63672B66F8B14F8DBA92B7A6 /* [CP] Embed Pods Frameworks */,
+				42F5F53A1B79F53B0BE646FC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -182,9 +233,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F00251141F230E570045B118 /* Build configuration list for PBXNativeTarget "TPDelegateMatrioskaDemoUITests" */;
 			buildPhases = (
+				39EEC60C4B20AD57C0DEBF4A /* [CP] Check Pods Manifest.lock */,
 				F00251011F230E570045B118 /* Sources */,
 				F00251021F230E570045B118 /* Frameworks */,
 				F00251031F230E570045B118 /* Resources */,
+				3730E6ECEF5592456F0386F7 /* [CP] Embed Pods Frameworks */,
+				55108175D81FA54F2D8325D2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -271,11 +325,150 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3730E6ECEF5592456F0386F7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TPDelegateMatrioskaDemoUITests/Pods-TPDelegateMatrioskaDemoUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		39EEC60C4B20AD57C0DEBF4A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		42F5F53A1B79F53B0BE646FC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TPDelegateMatrioskaDemoTests/Pods-TPDelegateMatrioskaDemoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		55108175D81FA54F2D8325D2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TPDelegateMatrioskaDemoUITests/Pods-TPDelegateMatrioskaDemoUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5AD3178AE21852D3549A4B6A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TPDelegateMatrioskaDemo/Pods-TPDelegateMatrioskaDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		63672B66F8B14F8DBA92B7A6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TPDelegateMatrioskaDemoTests/Pods-TPDelegateMatrioskaDemoTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9F76A4A3632CA9AC648C1A46 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A344CD62D6D4584BD2859AD3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FCDDCEDF60D9AB2703A5F117 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TPDelegateMatrioskaDemo/Pods-TPDelegateMatrioskaDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F00250DD1F230E570045B118 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F002511A1F23153D0045B118 /* TPTestServer.m in Sources */,
 				F00250EC1F230E570045B118 /* ViewController.m in Sources */,
 				F00250E91F230E570045B118 /* AppDelegate.m in Sources */,
 				F00250E61F230E570045B118 /* main.m in Sources */,
@@ -427,30 +620,37 @@
 		};
 		F002510F1F230E570045B118 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA0F36EFA844DCDC861293AC /* Pods-TPDelegateMatrioskaDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = N9D9Y52FAG;
 				INFOPLIST_FILE = TPDelegateMatrioskaDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tpphha.www.TPDelegateMatrioskaDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
 		F00251101F230E570045B118 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95A49E7678AFF18465008859 /* Pods-TPDelegateMatrioskaDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = N9D9Y52FAG;
 				INFOPLIST_FILE = TPDelegateMatrioskaDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tpphha.www.TPDelegateMatrioskaDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
 		F00251121F230E570045B118 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF6C21536D8CC24CA1CE4446 /* Pods-TPDelegateMatrioskaDemoTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = N9D9Y52FAG;
@@ -464,6 +664,7 @@
 		};
 		F00251131F230E570045B118 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF06A69148DD51F552F6D3B5 /* Pods-TPDelegateMatrioskaDemoTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = N9D9Y52FAG;
@@ -477,6 +678,7 @@
 		};
 		F00251151F230E570045B118 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB377D0D8CF2FAB873FE0503 /* Pods-TPDelegateMatrioskaDemoUITests.debug.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = N9D9Y52FAG;
 				INFOPLIST_FILE = TPDelegateMatrioskaDemoUITests/Info.plist;
@@ -489,6 +691,7 @@
 		};
 		F00251161F230E570045B118 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD975723CA4C0C2F91A65377 /* Pods-TPDelegateMatrioskaDemoUITests.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = N9D9Y52FAG;
 				INFOPLIST_FILE = TPDelegateMatrioskaDemoUITests/Info.plist;
@@ -518,6 +721,7 @@
 				F00251101F230E570045B118 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F00251111F230E570045B118 /* Build configuration list for PBXNativeTarget "TPDelegateMatrioskaDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +730,7 @@
 				F00251131F230E570045B118 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F00251141F230E570045B118 /* Build configuration list for PBXNativeTarget "TPDelegateMatrioskaDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +739,7 @@
 				F00251161F230E570045B118 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
