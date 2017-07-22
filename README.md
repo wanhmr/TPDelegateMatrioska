@@ -28,7 +28,7 @@ and the add this object as delegate
 obj.delegate = matrioska;
 ```
 
-In this way every time the `obj` calls a delegate this call is forwarded to all the delegates respecting the array sorting (if you like the matrioska metaphor the `mapClusterDelegate` is the outer layer and is the first one called and then `self`)
+In this way every time the `obj` calls a delegate this call is forwarded to all the delegates **respecting the array sorting**.
 
 The proxy object keep a **weak** reference to all the delegate objects, therefore is your responsibility to keep the objects alive with a strong reference. Anyway, by using an `NSPointerArray` I'm sure that if a delegate gets deallocated the reference inside the array is nil-ed and therefor doesn't crash the app.
 
