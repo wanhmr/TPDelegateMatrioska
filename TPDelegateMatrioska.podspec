@@ -93,7 +93,7 @@ Pod::Spec.new do |s|
   s.source_files  = "TPDelegateMatrioska", "TPDelegateMatrioska/**/*.{h,m}"
   # s.exclude_files = "Classes/Exclude"
 
-  # s.public_header_files = "Classes/**/*.h"
+  s.public_header_files = "TPDelegateMatrioska/**/*.h"
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
