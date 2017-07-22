@@ -9,6 +9,8 @@ This class is a subclass of `NSProxy` subclass that allows you to have multiple 
 
 ## Usage
 
+`pod 'TPDelegateMatrioska', '~> 0.0.2'`
+
 You can init an `TPDelegateMatrioska` object with as many delegate objects you want
 
 ```
