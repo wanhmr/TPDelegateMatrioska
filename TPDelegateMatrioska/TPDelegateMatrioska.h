@@ -17,11 +17,16 @@
 
 @property (readonly, nonatomic, strong) NSArray *delegates;
 
-- (instancetype)initWithQOS:(NSQualityOfService)qos;
+- (instancetype)initWithDelegateQueueQOS:(NSQualityOfService)qos;
 
-- (instancetype)initWithDelegates:(NSArray *)delegates qos:(NSQualityOfService)qos;
+- (instancetype)initWithDelegates:(NSArray *)delegates delegateQueueQOS:(NSQualityOfService)qos;
 
 - (instancetype)initWithDelegates:(NSArray *)delegates;
+
+/**
+ 返回的实例共用一个 delegate queue, 不是单例
+ */
++ (instancetype)defaultMatrioska;
 
 - (void)addDelegate:(id)delegate;
 - (void)removeDelegate:(id)delegate;
