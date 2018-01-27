@@ -9,18 +9,6 @@
 
 #import "TPDelegateMatrioska.h"
 
-static inline qos_class_t NSQualityOfServiceToQOSClass(NSQualityOfService qos) {
-    switch (qos) {
-        case NSQualityOfServiceUserInteractive: return QOS_CLASS_USER_INTERACTIVE;
-        case NSQualityOfServiceUserInitiated: return QOS_CLASS_USER_INITIATED;
-        case NSQualityOfServiceUtility: return QOS_CLASS_UTILITY;
-        case NSQualityOfServiceBackground: return QOS_CLASS_BACKGROUND;
-        case NSQualityOfServiceDefault: return QOS_CLASS_DEFAULT;
-        default: return QOS_CLASS_UNSPECIFIED;
-    }
-}
-
-
 @implementation NSInvocation (TPDelegateMatrioskaReturnType)
 
 - (BOOL)methodReturnTypeIsVoid
@@ -33,100 +21,88 @@ static inline qos_class_t NSQualityOfServiceToQOSClass(NSQualityOfService qos) {
 
 @interface TPDelegateMatrioska ()
 @property (nonatomic, strong) NSPointerArray *mutableDelegates;
-@property (nonatomic, strong) dispatch_queue_t queue;
-@property (nonatomic, copy) NSString *uniqueId;
+@property(nonatomic, strong) NSRecursiveLock *mute;
 @end
 
 
 @implementation TPDelegateMatrioska
 
-static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey;
-
-- (instancetype)initWithDelegateQueueQOS:(NSQualityOfService)qos {
+- (instancetype)init {
     _mutableDelegates = [NSPointerArray weakObjectsPointerArray];
-    dispatch_qos_class_t qosClass = NSQualityOfServiceToQOSClass(qos);
-    dispatch_queue_attr_t attr = dispatch_queue_attr_make_with_qos_class(DISPATCH_QUEUE_SERIAL, qosClass, 0);
-    _queue = dispatch_queue_create("com.qlchat.LBDelegateMatrioska.queue", attr);
-    _uniqueId = [NSProcessInfo processInfo].globallyUniqueString;
-    dispatch_queue_set_specific(_queue, kDispatchQueueSpecificKey, (__bridge void *)_uniqueId, NULL);
-    return self;
-}
-
-- (instancetype)initWithDelegates:(NSArray *)delegates delegateQueueQOS:(NSQualityOfService)qos {
-    self = [self initWithDelegateQueueQOS:qos];
-    [delegates enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        [_mutableDelegates addPointer:(void *)obj];
-    }];
+    _mute = [[NSRecursiveLock alloc] init];
     return self;
 }
 
 - (instancetype)initWithDelegates:(NSArray *)delegates {
-    return [self initWithDelegates:delegates delegateQueueQOS:NSQualityOfServiceDefault];
-}
-
-- (instancetype)init {
+    self = [self init];
+    for (id delegate in delegates) {
+        [_mutableDelegates addPointer:(void *)delegate];
+    }
     return self;
 }
 
-static dispatch_queue_t sharedQueue;
-
 + (instancetype)defaultMatrioska {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        dispatch_qos_class_t qosClass = NSQualityOfServiceToQOSClass(NSQualityOfServiceUserInitiated);
-        dispatch_queue_attr_t attr = dispatch_queue_attr_make_with_qos_class(DISPATCH_QUEUE_SERIAL, qosClass, 0);
-        sharedQueue = dispatch_queue_create("com.qlchat.LBDelegateMatrioska.shared.queue", attr);
-    });
-    TPDelegateMatrioska *instance = [[self alloc] init];
-    instance.mutableDelegates = [NSPointerArray weakObjectsPointerArray];
-    instance.queue = sharedQueue;
-    return instance;
+    return [[self alloc] init];
 }
 
+
+- (void)lock {
+    [_mute lock];
+}
+
+- (void)unlock {
+    [_mute unlock];
+}
 
 #pragma mark - Public interface
 
 - (NSArray *)delegates
 {
-    return [self.mutableDelegates allObjects];
+    [self lock];
+    NSArray *delegates = [_mutableDelegates allObjects];
+    [self unlock];
+    return delegates;
 }
 
 
 - (void)addDelegate:(id)aDelegate
 {
     NSParameterAssert(aDelegate);
-    [self dispatchSync:^{
-        [self.mutableDelegates addPointer:(void *)aDelegate];
-    }];
+    
+    [self lock];
+    [_mutableDelegates addPointer:(void *)aDelegate];
+    [self unlock];
 }
 
 - (void)removeDelegate:(id)aDelegate
 {
     NSParameterAssert(aDelegate);
-    [self dispatchSync:^{
-        NSUInteger index = 0;
-        for (id delegate in self.mutableDelegates) {
-            if (delegate == aDelegate) {
-                [self.mutableDelegates removePointerAtIndex:index];
-                break;
-            }
-            index++;
+    
+    [self lock];
+    NSUInteger index = 0;
+    for (id delegate in _mutableDelegates) {
+        if (delegate == aDelegate) {
+            [_mutableDelegates removePointerAtIndex:index];
+            break;
         }
-    }];
+        index++;
+    }
+    [self unlock];
 }
+
 
 
 - (BOOL)containsDelegate:(id)aDelegate {
     NSParameterAssert(aDelegate);
-    __block BOOL result = NO;
-    [self dispatchSync:^{
-        for (id delegate in self.mutableDelegates) {
-            if (delegate == aDelegate) {
-                result = YES;
-                break;
-            }
+    BOOL result = NO;
+    [self lock];
+    for (id delegate in self.mutableDelegates) {
+        if (delegate == aDelegate) {
+            result = YES;
+            break;
         }
-    }];
+    }
+    [self unlock];
     return result;
 }
 
@@ -140,28 +116,22 @@ static dispatch_queue_t sharedQueue;
     // otherwise I just invoke it on the first delegate that
     // respond to the given selector
     if ([invocation methodReturnTypeIsVoid]) {
-        [self dispatchSync:^{
-            for (id delegate in self.mutableDelegates) {
-                if ([delegate respondsToSelector:invocation.selector]) {
-                    [invocation invokeWithTarget:delegate];
-                }
+        [self lock];
+        for (id delegate in self.mutableDelegates) {
+            if ([delegate respondsToSelector:invocation.selector]) {
+                [invocation invokeWithTarget:delegate];
             }
-        }];
+        }
+        [self unlock];
     } else {
-        __block id firstResponder = nil;
-        [self dispatchSync:^{
-            firstResponder = [self p_firstResponderToSelector:invocation.selector];
-        }];
+        id firstResponder = [self p_firstResponderToSelector:invocation.selector];
         [invocation invokeWithTarget:firstResponder];
     }
 }
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)sel
 {
-    __block id firstResponder = nil;
-    [self dispatchSync:^{
-        firstResponder = [self p_firstResponderToSelector:sel];
-    }];
+    id firstResponder = [self p_firstResponderToSelector:sel];
     if (firstResponder) {
         return [firstResponder methodSignatureForSelector:sel];
     }
@@ -180,19 +150,13 @@ static dispatch_queue_t sharedQueue;
 
 - (BOOL)respondsToSelector:(SEL)aSelector
 {
-    __block id firstResponder = nil;
-    [self dispatchSync:^{
-        firstResponder = [self p_firstResponderToSelector:aSelector];
-    }];
+    id firstResponder = [self p_firstResponderToSelector:aSelector];
     return (firstResponder ? YES : NO);
 }
 
 - (BOOL)conformsToProtocol:(Protocol *)aProtocol
 {
-    __block id firstConformed = nil;
-    [self dispatchSync:^{
-        firstConformed = [self p_firstConformedToProtocol:aProtocol];
-    }];
+    id firstConformed = [self p_firstConformedToProtocol:aProtocol];
     return (firstConformed ? YES : NO);
 }
 
@@ -201,40 +165,29 @@ static dispatch_queue_t sharedQueue;
 - (id)p_firstResponderToSelector:(SEL)aSelector
 {
     id returnValue = nil;
+    [self lock];
     for (id delegate in self.mutableDelegates) {
         if ([delegate respondsToSelector:aSelector]) {
             returnValue = delegate;
             break;
         }
     }
+    [self unlock];
     return returnValue;
 }
 
 - (id)p_firstConformedToProtocol:(Protocol *)protocol
 {
     id returnValue = nil;
+    [self lock];
     for (id delegate in self.mutableDelegates) {
         if ([delegate conformsToProtocol:protocol]) {
             returnValue = delegate;
             break;
         }
     }
+    [self unlock];
     return returnValue;
-}
-
-- (void)dispatchSync:(_Nonnull dispatch_block_t)block {
-    if (_queue == sharedQueue) {
-        block();
-    }else {
-        NSString *uniqueId = (__bridge NSString *)(dispatch_get_specific(&kDispatchQueueSpecificKey));
-        if ([uniqueId isEqualToString:_uniqueId]) {
-            block();
-        }else {
-            dispatch_sync(_queue, ^{
-                block();
-            });
-        }
-    }
 }
 
 @end

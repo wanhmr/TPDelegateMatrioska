@@ -13,20 +13,19 @@
 @end
 
 
-@interface TPDelegateMatrioska : NSProxy
+@interface TPDelegateMatrioska : NSProxy <NSLocking>
 
 @property (readonly, nonatomic, strong) NSArray *delegates;
 
-- (instancetype)initWithDelegateQueueQOS:(NSQualityOfService)qos;
-
-- (instancetype)initWithDelegates:(NSArray *)delegates delegateQueueQOS:(NSQualityOfService)qos;
+- (instancetype)init;
 
 - (instancetype)initWithDelegates:(NSArray *)delegates;
 
 /**
- 返回的实例共用一个 delegate queue, 不是单例
+ NOTE: return value is't a singleton instance
  */
 + (instancetype)defaultMatrioska;
+
 
 - (void)addDelegate:(id)delegate;
 - (void)removeDelegate:(id)delegate;

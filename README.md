@@ -5,11 +5,11 @@ TPDelegateMatrioska
 
 This class is a subclass of `NSProxy` subclass that allows you to have multiple delegate helper objects (instead of the usual 1 to 1 relationship between the delegator and delegate).
 
-`TPDelegateMatrioska` is **thread safe**.
+`TPDelegateMatrioska` is **thread safe** based  `NSRecursiveLock`.
 
 ## Usage
 
-`pod 'TPDelegateMatrioska', '~> 0.0.2'`
+`pod 'TPDelegateMatrioska', '~> 0.0.3'`
 
 You can init an `TPDelegateMatrioska` object with as many delegate objects you want
 
@@ -19,7 +19,7 @@ TPDelegateMatrioska *matrioska = [[TPDelegateMatrioska alloc] initWithDelegates:
 or
 
 ```
-TPDelegateMatrioska *matrioska = [[TPDelegateMatrioska alloc] initWithQOS:NSQualityOfServiceUserInitiated];
+TPDelegateMatrioska *matrioska = [[TPDelegateMatrioska alloc] init];
 [matrioska addDelegate:aDelegate];
 ...
 ```

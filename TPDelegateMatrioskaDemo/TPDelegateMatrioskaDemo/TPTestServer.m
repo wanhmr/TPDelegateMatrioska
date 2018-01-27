@@ -31,7 +31,7 @@
 {
     self = [super init];
     if (self) {
-        _matrioska = [[TPDelegateMatrioska alloc] initWithDelegateQueueQOS:NSQualityOfServiceUserInitiated];
+        _matrioska = [TPDelegateMatrioska defaultMatrioska];
         _delegate =(id<TPTestServerDelegate>)_matrioska;
         _msgTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(msgTimerUpdate) userInfo:nil repeats:YES];
     }
