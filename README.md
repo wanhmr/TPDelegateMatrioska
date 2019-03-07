@@ -44,7 +44,7 @@ There are just 2 basic rule and one limitation you have to keep in mind:
 
 因为 [LBDelegateMatrioska](https://github.com/lukabernardi/LBDelegateMatrioska) 不是线程安全的，所以才有了这个库。
 
-为什么没有提交 PR 而是新建一个仓库，因为我发现这个仓库已经太久没有更新过（虽然 也可能是没有更新的必要QAQ）。
+为什么没有提交 PR 而是新建一个仓库，因为我发现这个仓库已经太久没有更新过（虽然也可能是没有更新的必要QAQ）。
 
 具体使用见 DEMO。
 
