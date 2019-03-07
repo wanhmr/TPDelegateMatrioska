@@ -20,8 +20,10 @@
 
 
 @interface TPDelegateMatrioska ()
+
 @property (nonatomic, strong) NSPointerArray *mutableDelegates;
-@property(nonatomic, strong) NSRecursiveLock *mute;
+@property (nonatomic, strong) NSLock *lock;
+
 @end
 
 
@@ -29,14 +31,14 @@
 
 - (instancetype)init {
     _mutableDelegates = [NSPointerArray weakObjectsPointerArray];
-    _mute = [[NSRecursiveLock alloc] init];
+    _lock = [[NSLock alloc] init];
     return self;
 }
 
 - (instancetype)initWithDelegates:(NSArray *)delegates {
     self = [self init];
     for (id delegate in delegates) {
-        [_mutableDelegates addPointer:(void *)delegate];
+        [self addDelegate:delegate];
     }
     return self;
 }
@@ -45,40 +47,27 @@
     return [[self alloc] init];
 }
 
-
-- (void)lock {
-    [_mute lock];
-}
-
-- (void)unlock {
-    [_mute unlock];
-}
-
 #pragma mark - Public interface
 
 - (NSArray *)delegates
 {
-    [self lock];
-    NSArray *delegates = [_mutableDelegates allObjects];
-    [self unlock];
-    return delegates;
+    return [_mutableDelegates allObjects];
 }
-
 
 - (void)addDelegate:(id)aDelegate
 {
     NSParameterAssert(aDelegate);
     
-    [self lock];
+    [_lock lock];
     [_mutableDelegates addPointer:(void *)aDelegate];
-    [self unlock];
+    [_lock unlock];
 }
 
 - (void)removeDelegate:(id)aDelegate
 {
     NSParameterAssert(aDelegate);
     
-    [self lock];
+    [_lock lock];
     NSUInteger index = 0;
     for (id delegate in _mutableDelegates) {
         if (delegate == aDelegate) {
@@ -87,25 +76,20 @@
         }
         index++;
     }
-    [self unlock];
+    [_lock unlock];
 }
-
-
 
 - (BOOL)containsDelegate:(id)aDelegate {
     NSParameterAssert(aDelegate);
     BOOL result = NO;
-    [self lock];
-    for (id delegate in self.mutableDelegates) {
+    for (id delegate in self.delegates) {
         if (delegate == aDelegate) {
             result = YES;
             break;
         }
     }
-    [self unlock];
     return result;
 }
-
 
 #pragma mark - NSProxy
 
@@ -116,13 +100,11 @@
     // otherwise I just invoke it on the first delegate that
     // respond to the given selector
     if ([invocation methodReturnTypeIsVoid]) {
-        [self lock];
-        for (id delegate in self.mutableDelegates) {
+        for (id delegate in self.delegates) {
             if ([delegate respondsToSelector:invocation.selector]) {
                 [invocation invokeWithTarget:delegate];
             }
         }
-        [self unlock];
     } else {
         id firstResponder = [self p_firstResponderToSelector:invocation.selector];
         [invocation invokeWithTarget:firstResponder];
@@ -165,28 +147,24 @@
 - (id)p_firstResponderToSelector:(SEL)aSelector
 {
     id returnValue = nil;
-    [self lock];
-    for (id delegate in self.mutableDelegates) {
+    for (id delegate in self.delegates) {
         if ([delegate respondsToSelector:aSelector]) {
             returnValue = delegate;
             break;
         }
     }
-    [self unlock];
     return returnValue;
 }
 
 - (id)p_firstConformedToProtocol:(Protocol *)protocol
 {
     id returnValue = nil;
-    [self lock];
-    for (id delegate in self.mutableDelegates) {
+    for (id delegate in self.delegates) {
         if ([delegate conformsToProtocol:protocol]) {
             returnValue = delegate;
             break;
         }
     }
-    [self unlock];
     return returnValue;
 }
 

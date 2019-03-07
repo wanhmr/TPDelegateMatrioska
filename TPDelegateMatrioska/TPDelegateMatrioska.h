@@ -13,9 +13,9 @@
 @end
 
 
-@interface TPDelegateMatrioska : NSProxy <NSLocking>
+@interface TPDelegateMatrioska : NSProxy 
 
-@property (readonly, nonatomic, strong) NSArray *delegates;
+@property (nonatomic, copy, readonly) NSArray *delegates;
 
 - (instancetype)init;
 
